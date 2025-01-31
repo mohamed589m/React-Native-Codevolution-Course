@@ -32,7 +32,9 @@ export default function App() {
       <Box style={{ backgroundColor: "#1c4c56", flex: 3 }}>Box 2</Box>
       <Box style={{ backgroundColor: "#ab9156" }}>Box 3</Box>
       <Box style={{ backgroundColor: "#6b0803" }}>Box 4</Box> */}
-      <Box style={{ backgroundColor: "#1c4c56" }}>Box 5</Box>
+      <Box style={{ backgroundColor: "#1c4c56", paddingVertical: 100 }}>
+        Box 5
+      </Box>
       <Box style={{ backgroundColor: "#b95f21" }}>Box 6</Box>
       <Box style={{ backgroundColor: "#ab9156" }}>Box 7</Box>
     </View>
@@ -42,17 +44,25 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+
     // flexDirection:"column", // The default value
     // flexDirection:"column-reverse",
-    // flexDirection: "row",
+    flexDirection: "row",
     // flexDirection:"row-reverse",
 
-    // justifyContent:"flex-start",
+    // justifyContent:"flex-start", // The default value
     // justifyContent:"flex-end",
     // justifyContent:"center",
     // justifyContent:"space-between",
     // justifyContent:"space-around",
-    justifyContent:"space-evenly",
+    // justifyContent:"space-evenly",
+
+    // alignItems: "stretch", // The default value
+    // alignItems: "flex-start",
+    // alignItems: "flex-end",
+    // alignItems: "center",
+    alignItems: "baseline", // This value will align flex items based on thier contents baseline (flex items aligned on the same baseline)
+
     marginTop: 64,
     borderWidth: 6,
     borderColor: "red",
