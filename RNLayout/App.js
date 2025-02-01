@@ -140,7 +140,12 @@ const styles = StyleSheet.create({
     // alignContent: "stretch",
     // alignContent: "space-between",
     // alignContent: "space-around",
-    alignContent: "space-evenly",
+    // alignContent: "space-evenly",
+
+    // rowGap:20,
+    // columnGap:30,
+    gap:10,
+
     height: 310,
     marginTop: 64,
     borderWidth: 6,
