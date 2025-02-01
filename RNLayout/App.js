@@ -131,9 +131,17 @@ const styles = StyleSheet.create({
     // flexWrap: "nowrap", // This is the default value
     flexWrap: "wrap",
     // flexWrap:"wrap-reverse",
-    flexDirection:"row",
+    // flexDirection:"row",
 
-    height: 300,
+    //* When using alignContent height and flexWrap must be exist
+    // alignContent: "flex-start", // The default value
+    // alignContent: "flex-end",
+    // alignContent: "center",
+    // alignContent: "stretch",
+    // alignContent: "space-between",
+    // alignContent: "space-around",
+    alignContent: "space-evenly",
+    height: 310,
     marginTop: 64,
     borderWidth: 6,
     borderColor: "red",
