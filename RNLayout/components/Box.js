@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     padding: 20,
     // height: 50,
     // width: 50,
+    flexGrow: 1,
   },
   text: {
     fontSize: 24,
