@@ -86,7 +86,43 @@
 // *****************************************************************************************************
 // ********************************************SafeAreaView***********************************************
 
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+// import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+
+// export default function App() {
+//   return (
+//     <SafeAreaView style={styles.safeContainer}>
+//       <View style={styles.container}>
+//         <View style={styles.box}>
+//           <Text style={styles.text}>Welcome</Text>
+//         </View>
+//       </View>
+//     </SafeAreaView>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   safeContainer: {
+//     flex: 1,
+//     backgroundColor: "plum",
+//   },
+//   container: {
+//     flex: 1,
+//     backgroundColor: "plum",
+//   },
+//   box: {
+//     padding: 20,
+//   },
+//   text: {
+//     fontSize: 24,
+//     fontWeight: "bold",
+//     textAlign: "center",
+//   },
+// });
+
+// *****************************************************************************************************
+// ********************************************Platform Specific Code***********************************************
+
+import { SafeAreaView, StyleSheet, Text, View, Platform } from "react-native";
 
 export default function App() {
   return (
@@ -108,12 +144,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "plum",
+    // paddingTop: Platform.OS === "ios" ? 25 : 0,
+    paddingTop: Platform.OS === "android" ? 25 : 0,
   },
   box: {
     padding: 20,
   },
   text: {
-    fontSize: 24,
+    ...Platform.select({
+      android: {
+        color: "purple",
+        fontSize: 24,
+        fontStyle: "italic",
+      },
+      ios: {
+        color: "blue",
+        fontSize: 30,
+      },
+    }),
     fontWeight: "bold",
     textAlign: "center",
   },
