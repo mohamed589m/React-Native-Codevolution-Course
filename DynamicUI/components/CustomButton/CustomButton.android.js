@@ -7,11 +7,11 @@ const CustomButton = ({ onPress, title }) => (
       justifyContent: "center",
       alignItems: "center",
       backgroundColor: "lightblue",
-      borderRadius: 5,
+      borderRadius: 20,
       padding: 10,
     }}
   >
-    <Text style={{ color: "blue", fontSize: 18 }}>{title}</Text>
+    <Text style={{ color: "purple", fontSize: 18 }}>{title}</Text>
   </Pressable>
 );
 
