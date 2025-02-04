@@ -1,9 +1,40 @@
-import { Platform, StyleSheet, Text, View } from "react-native";
+import {
+  Image,
+  Platform,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
-export default function PokemonCard() {
+export default function PokemonCard({
+  name,
+  image,
+  type,
+  hp,
+  moves,
+  weakness,
+}) {
   return (
     <View style={styles.card}>
-      <Text>Pokemon Card</Text>
+      <View>
+        <Text>{name}</Text>
+        <Text>{hp}</Text>
+      </View>
+
+      {/* <Image source={image} accessibilityLabel={`${name} pokemon`} /> */}
+
+      <View>
+        <Text>{type}</Text>
+      </View>
+
+      <View>
+        <Text>Moves: {moves.join(", ")}</Text>
+      </View>
+
+      <View>
+        <Text>Weakness: {weakness.join(", ")}</Text>
+      </View>
     </View>
   );
 }
