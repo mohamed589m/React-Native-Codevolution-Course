@@ -28,7 +28,7 @@ export default function PokemonCard({
   type,
   hp,
   moves,
-  weakness,
+  weaknesses,
 }) {
   const { borderColor, emoji } = getTypeDetails(type);
   return (
@@ -56,8 +56,8 @@ export default function PokemonCard({
         <Text style={styles.movesText}>Moves: {moves.join(", ")}</Text>
       </View>
 
-      <View style={styles.weaknessContainer}>
-        <Text style={styles.weaknessText}>Weakness: {weakness.join(", ")}</Text>
+      <View style={styles.weaknessesContainer}>
+        <Text style={styles.weaknessesText}>weaknesses: {weaknesses.join(", ")}</Text>
       </View>
     </View>
   );
@@ -126,10 +126,10 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: "bold",
   },
-  weaknessContainer: {
+  weaknessesContainer: {
     marginBottom: 8,
   },
-  weaknessText: {
+  weaknessesText: {
     fontSize: 22,
     fontWeight: "bold",
   },
