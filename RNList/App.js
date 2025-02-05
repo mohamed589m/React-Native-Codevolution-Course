@@ -5,13 +5,35 @@ import {
   View,
   SafeAreaView,
   StatusBar,
+  FlatList,
 } from "react-native";
 import PokemonList from "./data.json";
+
+// export default function App() {
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <ScrollView style={styles.scrollView}>
+//         {PokemonList.map((pokemon) => {
+//           return (
+//             <View key={pokemon.id} style={styles.card}>
+//               <Text style={styles.cardText}>{pokemon.type}</Text>
+//               <Text style={styles.cardText}>{pokemon.name}</Text>
+//             </View>
+//           );
+//         })}
+//       </ScrollView>
+//     </SafeAreaView>
+//   );
+// }
+
+// ************************************************************************************************
+/* In react native the recommended approach to rendering lists is to use the flat list component
+which renders only the items currently in view making it highly performant for long lists */
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
+      {/* <ScrollView style={styles.scrollView}>
         {PokemonList.map((pokemon) => {
           return (
             <View key={pokemon.id} style={styles.card}>
@@ -20,7 +42,27 @@ export default function App() {
             </View>
           );
         })}
-      </ScrollView>
+      </ScrollView> */}
+
+      <View style={styles.scrollView}>
+        <FlatList
+          data={PokemonList}
+          renderItem={({ item }) => {
+            // the parameter must called item
+            console.log(item.id);
+            return (
+              <View key={item.id} style={styles.card}>
+                <Text style={styles.cardText}>{item.type}</Text>
+                <Text style={styles.cardText}>{item.name}</Text>
+              </View>
+            );
+          }}
+          // horizontal // If you want to render the list horizontally
+          // horizontal={false}
+
+          keyExtractor={(item, index) => item.id.toString()}
+        />
+      </View>
     </SafeAreaView>
   );
 }
