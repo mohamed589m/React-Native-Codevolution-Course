@@ -6,8 +6,10 @@ import {
   SafeAreaView,
   StatusBar,
   FlatList,
+  SectionList,
 } from "react-native";
 import PokemonList from "./data.json";
+import groupedPokemonList from "./grouped-data.json";
 
 // export default function App() {
 //   return (
@@ -212,39 +214,101 @@ which renders only the items currently in view making it highly performant for l
 
 // ************************************************************************************************
 
+// export default function App() {
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <View style={styles.scrollView}>
+//         <FlatList
+//           data={PokemonList}
+//           renderItem={({ item }) => {
+//             // the parameter must called item
+//             // console.log(item.id);
+//             return (
+//               <View key={item.id} style={styles.card}>
+//                 <Text style={styles.cardText}>{item.type}</Text>
+//                 <Text style={styles.cardText}>{item.name}</Text>
+//               </View>
+//             );
+//           }}
+//           // horizontal // If you want to render the list horizontally
+//           // horizontal={false}
+
+//           keyExtractor={(item, index) => item.id.toString()}
+//           ItemSeparatorComponent={<View style={{ height: 16 }} />} //It is the component between each item in the list and we use it here instead of marginBottom that makes a marginBottom for the last element too
+//           ListEmptyComponent={
+//             <Text style={styles.emptyText}>No items found</Text>
+//           } //this prop accepts a react component and renders it when the list is empty
+
+//           ListHeaderComponent={
+//             <Text style={styles.headerText}>Pokemon List</Text>
+//           }
+
+//           ListFooterComponent={
+//             <Text style={styles.footerText}>End of list</Text>
+//           }
+
+//         />
+//       </View>
+//     </SafeAreaView>
+//   );
+// }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#f5f5f5",
+//     paddingTop: StatusBar.currentHeight, // SafeAreaView on ios will not affected by this
+//   },
+//   scrollView: {
+//     paddingHorizontal: 16,
+//   },
+//   card: {
+//     backgroundColor: "white",
+//     padding: 16,
+//     borderRadius: 8,
+//     borderWidth: 1,
+//     // marginBottom: 16,
+//   },
+//   cardText: {
+//     fontSize: 30,
+//   },
+//   emptyText: {
+//     fontSize: 20,
+//     color: "gray",
+//   },
+//   headerText: {
+//     fontSize: 24,
+//     textAlign: "center",
+//     marginBottom: 12,
+//   },
+//   footerText: {
+//     fontSize: 24,
+//     textAlign: "center",
+//     marginTop: 12,
+//   },
+// });
+
+// ************************************************************************************************
+
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.scrollView}>
-        <FlatList
-          data={PokemonList}
+        <SectionList
+          sections={groupedPokemonList}
           renderItem={({ item }) => {
-            // the parameter must called item
-            // console.log(item.id);
+            // Item here refers to each element in the data array in hence the property in grouped-data.json being called data is vital
             return (
-              <View key={item.id} style={styles.card}>
-                <Text style={styles.cardText}>{item.type}</Text>
-                <Text style={styles.cardText}>{item.name}</Text>
+              <View style={styles.card}>
+                <Text style={styles.cardText}>{item}</Text>
               </View>
             );
           }}
-          // horizontal // If you want to render the list horizontally
-          // horizontal={false}
-
-          keyExtractor={(item, index) => item.id.toString()}
-          ItemSeparatorComponent={<View style={{ height: 16 }} />} //It is the component between each item in the list and we use it here instead of marginBottom that makes a marginBottom for the last element too
-          ListEmptyComponent={
-            <Text style={styles.emptyText}>No items found</Text>
-          } //this prop accepts a react component and renders it when the list is empty
-
-          ListHeaderComponent={
-            <Text style={styles.headerText}>Pokemon List</Text>
-          }
-
-          ListFooterComponent={
-            <Text style={styles.footerText}>End of list</Text>
-          }
-
+          renderSectionHeader={({ section }) => (
+            <Text style={styles.sectionHeaderText}>{section.type}</Text>
+          )}
+          ItemSeparatorComponent={() => <View style={{ height: 16 }} />}
+          SectionSeparatorComponent={() => <View style={{ height: 16 }} />} //It is the component between each section in the list
         />
       </View>
     </SafeAreaView>
@@ -283,5 +347,10 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: "center",
     marginTop: 12,
+  },
+  sectionHeaderText: {
+    backgroundColor: "white",
+    fontSize: 24,
+    fontWeight: "bold",
   },
 });
