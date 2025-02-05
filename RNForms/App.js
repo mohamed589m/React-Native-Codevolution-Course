@@ -13,7 +13,16 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <TextInput style={styles.input} value={name} onChangeText={setName} />
+      <TextInput
+        style={styles.input}
+        value={name}
+        onChangeText={setName}
+        placeholder="email@example.com"
+        // secureTextEntry // This prop masks the input characters (like passwords)
+        // keyboardType="numeric"
+        autoCorrect={false}
+        autoCapitalize="none"
+      />
       <Text style={styles.text}>My name is {name}</Text>
     </SafeAreaView>
   );
