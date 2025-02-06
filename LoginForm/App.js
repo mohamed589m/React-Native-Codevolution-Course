@@ -1,18 +1,37 @@
 import { useState } from "react";
-import { Button, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Button,
+  Image,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 
 export default function App() {
-  const [username, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView
+      behavior="padding"
+      keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
+      style={styles.container}
+    >
+      {/* This ensures that component increases its padding at the bottom
+      matching the keyboards height */}
       <View style={styles.form}>
+        <Image
+          source={require("./assets/adaptive-icon.png")}
+          style={styles.image}
+        />
         <Text style={styles.label}>Username</Text>
         <TextInput
           placeholder="Enter your username"
           style={styles.input}
-          value={useState}
-          onChangeText={setUserName}
+          value={username}
+          onChangeText={setUsername}
         />
         <Text style={styles.label}>Password</Text>
         <TextInput
@@ -24,7 +43,7 @@ export default function App() {
         />
         <Button title="Login" onPress={() => {}} />
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -60,5 +79,11 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     padding: 10,
     borderRadius: 5,
+  },
+  image: {
+    height: 200,
+    width: 200,
+    alignSelf: "center",
+    marginBottom: 50,
   },
 });
