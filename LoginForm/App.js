@@ -13,6 +13,19 @@ import {
 export default function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    const errors = {};
+
+    if (!username) errors.username = "Username is required";
+    if (!password) errors.password = "Password is required";
+
+    setErrors(errors);
+
+    return Object.keys(errors).length === 0;
+  };
+
   return (
     <KeyboardAvoidingView
       behavior="padding"
@@ -33,6 +46,9 @@ export default function App() {
           value={username}
           onChangeText={setUsername}
         />
+        {errors.username && (
+          <Text style={styles.errorText}>{errors.username}</Text>
+        )}
         <Text style={styles.label}>Password</Text>
         <TextInput
           placeholder="Enter your password"
@@ -41,6 +57,9 @@ export default function App() {
           value={password}
           onChangeText={setPassword}
         />
+        {errors.password && (
+          <Text style={styles.errorText}>{errors.password}</Text>
+        )}
         <Button title="Login" onPress={() => {}} />
       </View>
     </KeyboardAvoidingView>
@@ -85,5 +104,9 @@ const styles = StyleSheet.create({
     width: 200,
     alignSelf: "center",
     marginBottom: 50,
+  },
+  errorText: {
+    color: "red",
+    marginBottom: 10,
   },
 });
