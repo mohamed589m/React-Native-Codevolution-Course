@@ -25,7 +25,13 @@ export default function App() {
       <Stack.Navigator initialRouteName="Home">
         {/* // we uses initialRouteName to make the About screen displayed as the initial screen */}
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="About" component={AboutScreen} />
+        <Stack.Screen
+          name="About"
+          component={AboutScreen}
+          initialParams={{
+            name: "Default params",
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
