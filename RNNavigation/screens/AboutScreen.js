@@ -1,9 +1,10 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 
-export default function AboutScreen() {
+export default function AboutScreen({ navigation }) {
   return (
     <View style={Styles.container}>
       <Text style={Styles.text}> About Screen</Text>
+      <Button title="Go to home" onPress={() => navigation.navigate("Home")} />
     </View>
   );
 }

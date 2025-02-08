@@ -5,10 +5,24 @@ import AboutScreen from "./screens/AboutScreen";
 
 const Stack = createNativeStackNavigator();
 
+// export default function App() {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator initialRouteName="About">
+//         {/* // we uses initialRouteName to make the About screen displayed as the initial screen */}
+//         <Stack.Screen name="Home" component={HomeScreen} />
+//         <Stack.Screen name="About" component={AboutScreen} />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// }
+
+// *****************************************************************************************************************
+
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="About">
+      <Stack.Navigator initialRouteName="Home">
         {/* // we uses initialRouteName to make the About screen displayed as the initial screen */}
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="About" component={AboutScreen} />
